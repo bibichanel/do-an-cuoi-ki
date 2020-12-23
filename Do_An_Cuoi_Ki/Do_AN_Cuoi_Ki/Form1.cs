@@ -14,6 +14,7 @@ using Emgu.CV.CvEnum;
 using System.IO;
 using System.Threading;
 using System.Diagnostics;
+using Do_AN_Cuoi_Ki.DAO;
 
 namespace Do_AN_Cuoi_Ki
 {
@@ -79,25 +80,27 @@ namespace Do_AN_Cuoi_Ki
 
                             if (EnableSaveImage)
                             {
-                                string path = Directory.GetCurrentDirectory() + "\\DetectImages";
-                                if (!Directory.Exists(path))
-                                    Directory.CreateDirectory(path);
+                                string path01 = @"D:\Git_Lab\Do_AN_Cuoi_Ki\Do_AN_Cuoi_Ki\ImageAll\";
+                                string path02 = @"D:\Git_Lab\Do_AN_Cuoi_Ki\Do_AN_Cuoi_Ki\ImageIcon\";
+                                if (!Directory.Exists(path01))
+                                    Directory.CreateDirectory(path01);
+                                if (!Directory.Exists(path02))
+                                    Directory.CreateDirectory(path02);
 
-                                Task.Factory.StartNew(() => {
-                                    for (int i = 0; i < 10; i++)
-                                    {
-                                        
-                                        resultImage.Resize(200, 200, Inter.Cubic).Save(path + @"\" + txtNamePerson.Text + "_" + DateTime.Now.ToString("dd-mm-yyyy-hh-mm-ss") + ".jpg");
-                                        Thread.Sleep(1000);
-                                    }
-                                });
+                                picCapture.Image.Save(path01 + @"\" + txtMSSV.Text + "_02" + ".jpg"); 
+                                resultImage.Resize(200, 200, Inter.Cubic).Save(path02 + @"\" + txtMSSV.Text + "_01"  + ".jpg");
 
+                                string date = dateTimePicker1.Value.Date.ToString("dd/MM/yyyy");
+                                bool result1 = InfomationDAO.Instance.InsertInfomationPerson(txtMSSV.Text, txtNamePerson.Text, date);
+                                bool result2 = ImageDAO.Instance.InsertInformation(txtMSSV.Text, 
+                                    path01 + @"\" + txtMSSV.Text + "_02" + ".jpg", path02 + @"\" + txtMSSV.Text + "_01" + ".jpg");
+                                bool result3 = 
                             }
 
                             EnableSaveImage = false;
-                            if (btnSave.InvokeRequired)
+                            if (btnAddPerson.InvokeRequired)
                             {
-                                btnSave.Invoke(new ThreadStart(delegate { btnSave.Enabled = true; }));
+                                btnAddPerson.Invoke(new ThreadStart(delegate { btnAddPerson.Enabled = true; }));
                             }
                             //------------------
 
@@ -120,14 +123,14 @@ namespace Do_AN_Cuoi_Ki
         private void btnAddPerson_Click(object sender, EventArgs e)
         {
            //btnSave.Enabled = true;
-            btnSave.Enabled = false;
+            btnAddPerson.Enabled = false;
             EnableSaveImage = true;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            btnSave.Enabled = false;
-            btnSave.Enabled = true;
+            btnAddPerson.Enabled = false;
+            btnAddPerson.Enabled = true;
             EnableSaveImage = false;
         }
 
