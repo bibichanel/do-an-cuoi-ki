@@ -35,3 +35,9 @@ D:\Git_Lab\Do_An_Cuoi_Ki\Do_AN_Cuoi_Ki\obj\Debug\Do_AN_Cuoi_Ki.csproj.CopyComple
 D:\Git_Lab\Do_An_Cuoi_Ki\Do_AN_Cuoi_Ki\obj\Debug\Do_AN_Cuoi_Ki.exe
 D:\Git_Lab\Do_An_Cuoi_Ki\Do_AN_Cuoi_Ki\obj\Debug\Do_AN_Cuoi_Ki.pdb
 D:\Git_Lab\Do_An_Cuoi_Ki\Do_AN_Cuoi_Ki\bin\Debug\haarcascade_frontalface_alt.xml
+D:\Git_Lab\Do_AN_Cuoi_Ki\Do_AN_Cuoi_Ki\obj\Debug\Do_AN_Cuoi_Ki.IMAGE.resources
+D:\Git_Lab\Do_AN_Cuoi_Ki\Do_AN_Cuoi_Ki\bin\Debug\QRCoder.dll
+D:\Git_Lab\Do_AN_Cuoi_Ki\Do_AN_Cuoi_Ki\bin\Debug\zxing.dll
+D:\Git_Lab\Do_AN_Cuoi_Ki\Do_AN_Cuoi_Ki\bin\Debug\zxing.presentation.dll
+D:\Git_Lab\Do_AN_Cuoi_Ki\Do_AN_Cuoi_Ki\bin\Debug\zxing.xml
+D:\Git_Lab\Do_AN_Cuoi_Ki\Do_AN_Cuoi_Ki\bin\Debug\zxing.presentation.xml

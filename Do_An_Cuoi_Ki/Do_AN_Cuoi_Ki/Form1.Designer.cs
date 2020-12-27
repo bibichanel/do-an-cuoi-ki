@@ -36,25 +36,25 @@
             this.picDetect = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.picQRCode = new System.Windows.Forms.PictureBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.txtMSSV = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listViewDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listViewQRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnTrain = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picCapture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDetect)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picQRCode)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,7 +89,7 @@
             // 
             // btnAddPerson
             // 
-            this.btnAddPerson.Location = new System.Drawing.Point(79, 212);
+            this.btnAddPerson.Location = new System.Drawing.Point(96, 225);
             this.btnAddPerson.Name = "btnAddPerson";
             this.btnAddPerson.Size = new System.Drawing.Size(119, 23);
             this.btnAddPerson.TabIndex = 3;
@@ -123,9 +123,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.pictureBox1);
+            this.groupBox1.Controls.Add(this.picQRCode);
             this.groupBox1.Controls.Add(this.dateTimePicker1);
             this.groupBox1.Controls.Add(this.btnAddPerson);
             this.groupBox1.Controls.Add(this.txtMSSV);
@@ -134,19 +133,12 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.groupBox1.Location = new System.Drawing.Point(1042, 30);
+            this.groupBox1.Location = new System.Drawing.Point(1042, 28);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(295, 556);
+            this.groupBox1.Size = new System.Drawing.Size(295, 558);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Information Peson";
-            // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(0, 260);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(283, 10);
-            this.panel1.TabIndex = 14;
             // 
             // label4
             // 
@@ -157,14 +149,14 @@
             this.label4.TabIndex = 13;
             this.label4.Text = "QR CODE";
             // 
-            // pictureBox1
+            // picQRCode
             // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(35, 345);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(200, 200);
-            this.pictureBox1.TabIndex = 12;
-            this.pictureBox1.TabStop = false;
+            this.picQRCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picQRCode.Location = new System.Drawing.Point(33, 359);
+            this.picQRCode.Name = "picQRCode";
+            this.picQRCode.Size = new System.Drawing.Size(200, 185);
+            this.picQRCode.TabIndex = 12;
+            this.picQRCode.TabStop = false;
             // 
             // dateTimePicker1
             // 
@@ -180,6 +172,7 @@
             this.txtMSSV.Name = "txtMSSV";
             this.txtMSSV.Size = new System.Drawing.Size(152, 22);
             this.txtMSSV.TabIndex = 4;
+            this.txtMSSV.TextChanged += new System.EventHandler(this.txtMSSV_TextChanged);
             // 
             // label3
             // 
@@ -199,6 +192,13 @@
             this.label2.TabIndex = 10;
             this.label2.Text = "Date of birth:";
             // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(1042, 308);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(283, 10);
+            this.panel1.TabIndex = 14;
+            // 
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -208,7 +208,7 @@
             this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1337, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1337, 28);
             this.menuStrip1.TabIndex = 13;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -218,53 +218,59 @@
             this.saveToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 26);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(123, 26);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(123, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // viewToolStripMenuItem
             // 
             this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.listViewDataToolStripMenuItem,
-            this.listViewQRToolStripMenuItem});
+            this.listViewDataToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(53, 26);
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
             this.viewToolStripMenuItem.Text = "view";
             // 
             // listViewDataToolStripMenuItem
             // 
             this.listViewDataToolStripMenuItem.Name = "listViewDataToolStripMenuItem";
-            this.listViewDataToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
+            this.listViewDataToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.listViewDataToolStripMenuItem.Text = "List view data";
-            // 
-            // listViewQRToolStripMenuItem
-            // 
-            this.listViewQRToolStripMenuItem.Name = "listViewQRToolStripMenuItem";
-            this.listViewQRToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
-            this.listViewQRToolStripMenuItem.Text = "List view QR";
+            this.listViewDataToolStripMenuItem.Click += new System.EventHandler(this.listViewDataToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(64, 26);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(64, 24);
             this.aboutToolStripMenuItem.Text = "About";
+            // 
+            // btnTrain
+            // 
+            this.btnTrain.Location = new System.Drawing.Point(916, 376);
+            this.btnTrain.Name = "btnTrain";
+            this.btnTrain.Size = new System.Drawing.Size(75, 23);
+            this.btnTrain.TabIndex = 15;
+            this.btnTrain.Text = "Train";
+            this.btnTrain.UseVisualStyleBackColor = true;
+            this.btnTrain.Click += new System.EventHandler(this.btnTrain_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1337, 586);
+            this.Controls.Add(this.btnTrain);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.picDetect);
             this.Controls.Add(this.btnDetectFace);
@@ -278,7 +284,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picDetect)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picQRCode)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -298,7 +304,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox picQRCode;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.TextBox txtMSSV;
         private System.Windows.Forms.Label label3;
@@ -309,8 +315,8 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem listViewDataToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem listViewQRToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.Button btnTrain;
     }
 }
 

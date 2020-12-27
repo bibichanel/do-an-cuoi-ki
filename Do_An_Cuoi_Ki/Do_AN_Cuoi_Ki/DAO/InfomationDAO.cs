@@ -23,7 +23,7 @@ namespace Do_AN_Cuoi_Ki.DAO
             private set => instance = value;
         }
         private InfomationDAO() { }
-        public List<Infomation> LoadCTHDList()
+        public List<Infomation> LoadInfoList()
         {
             List<Infomation> InfomationList = new List<Infomation>();
             DataTable data = DataProvider.Instance.ExcuteQuery("SELECT* FROM INFORMATION");
@@ -36,10 +36,25 @@ namespace Do_AN_Cuoi_Ki.DAO
         }
         public bool InsertInfomationPerson(string MSSV, string HoTen, string NgaySinh)
         {
-            string query = string.Format("INSERT dbo.INFORMATION VALUES ( '{0}', '{1}', {2})",
+            string query = string.Format("INSERT dbo.INFORMATION VALUES ( '{0}', N'{1}', '{2}')",
                                                                 MSSV, HoTen, NgaySinh);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
+        }
+        public Infomation SearchEmployee(string MSSV)
+        {
+            Infomation Info = new Infomation();
+            Info.MSSV = MSSV;
+            List<Infomation> InfoList = InfomationDAO.Instance.LoadInfoList();
+            foreach (Infomation item in InfoList)
+            {
+                if (Info.MSSV == item.MSSV)
+                {
+                    Info.HoTen = item.HoTen;
+                    Info.NgaySinh = item.NgaySinh;
+                }
+            }
+            return Info;
         }
     }
 }

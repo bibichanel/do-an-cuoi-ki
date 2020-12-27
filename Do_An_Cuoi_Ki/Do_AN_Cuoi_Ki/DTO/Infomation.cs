@@ -17,6 +17,7 @@ namespace Do_AN_Cuoi_Ki.DTO
         public string HoTen { get => hoTen; set => hoTen = value; }
         public string NgaySinh { get => ngaySinh; set => ngaySinh = value; }
 
+        public Infomation() { }
         public Infomation(string MSSV, string HoTen, string NgaySinh)
         {
             this.MSSV = MSSV;

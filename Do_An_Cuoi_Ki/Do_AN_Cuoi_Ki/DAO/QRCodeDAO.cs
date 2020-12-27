@@ -23,7 +23,7 @@ namespace Do_AN_Cuoi_Ki.DAO
             private set => instance = value;
         }
         private QRCodeDAO() { }
-        public List<QRCode> LoadImageList()
+        public List<QRCode> LoadQRCodeList()
         {
             List<QRCode> QRCodeList = new List<QRCode>();
             DataTable data = DataProvider.Instance.ExcuteQuery("SELECT* FROM QRCODE");
@@ -34,10 +34,10 @@ namespace Do_AN_Cuoi_Ki.DAO
             }
             return QRCodeList;
         }
-        public bool InsertInfomationPerson(string MSSV, string HoTen, string NgaySinh)
+        public bool InsertQRCode(string MSSV, string LinkQR, string LinkImage02)
         {
-            string query = string.Format("INSERT dbo.INFORMATION VALUES ( '{0}', '{1}', {2})",
-                                                                MSSV, HoTen, NgaySinh);
+            string query = string.Format("INSERT dbo.QRCODE VALUES ( '{0}', '{1}', '{2}')",
+                                                                MSSV, LinkQR, LinkImage02);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
         }

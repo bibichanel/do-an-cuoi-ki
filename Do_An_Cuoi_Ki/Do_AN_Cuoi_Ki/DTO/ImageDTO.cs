@@ -23,6 +23,7 @@ namespace Do_AN_Cuoi_Ki.DTO
             this.LinkImage02 = LinkImage02;
 
         }
+        public ImageDTO() { }
         public ImageDTO(DataRow row)
         {
             this.MSSV = row["MSSV"].ToString();

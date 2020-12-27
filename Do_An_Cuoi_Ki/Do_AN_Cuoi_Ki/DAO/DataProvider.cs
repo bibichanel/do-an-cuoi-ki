@@ -22,7 +22,7 @@ namespace Do_AN_Cuoi_Ki.DAO
             private set { DataProvider.instance = value; }
         }
         private DataProvider() { }
-        private string connectionStr = @"Data Source=LAPTOP-L95VF11G\SQLEXPRESS;Initial Catalog=DO_AN_CUOI_KI;Persist Security Info=True;User ID=sa";
+        private string connectionStr = @"Data Source=LAPTOP-L95VF11G\SQLEXPRESS;Initial Catalog=DO_AN_CUOI_KI;User ID=sa; Password=123;";
         public DataTable ExcuteQuery(string query, object[] parameter = null)
         {
             DataTable data = new DataTable();
@@ -59,7 +59,7 @@ namespace Do_AN_Cuoi_Ki.DAO
 
                 SqlCommand command = new SqlCommand(query, connection);
                 if (parameter != null)
-                {
+                {   
                     string[] listPara = query.Split(' ');
                     int i = 0;
                     foreach (string item in listPara)
