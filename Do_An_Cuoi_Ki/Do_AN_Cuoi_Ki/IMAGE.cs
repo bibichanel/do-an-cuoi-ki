@@ -84,5 +84,30 @@ namespace Do_AN_Cuoi_Ki
 
             return (Image)b;
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtxDateOfBirth_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void IMAGE_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMSSV_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
