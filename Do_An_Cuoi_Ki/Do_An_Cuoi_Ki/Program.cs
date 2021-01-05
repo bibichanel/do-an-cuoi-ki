@@ -16,7 +16,7 @@ namespace Do_An_Cuoi_Ki
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new fLogin());
         }
     }
 }

@@ -119,6 +119,7 @@ namespace Do_An_Cuoi_Ki
             // 
             this.txtPassWord.Location = new System.Drawing.Point(17, 217);
             this.txtPassWord.Name = "txtPassWord";
+            this.txtPassWord.ReadOnly = true;
             this.txtPassWord.Size = new System.Drawing.Size(315, 22);
             this.txtPassWord.TabIndex = 0;
             // 
@@ -126,6 +127,7 @@ namespace Do_An_Cuoi_Ki
             // 
             this.txtPhoneNumber.Location = new System.Drawing.Point(17, 130);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
+            this.txtPhoneNumber.ReadOnly = true;
             this.txtPhoneNumber.Size = new System.Drawing.Size(315, 22);
             this.txtPhoneNumber.TabIndex = 0;
             // 
@@ -133,6 +135,7 @@ namespace Do_An_Cuoi_Ki
             // 
             this.txtName.Location = new System.Drawing.Point(17, 47);
             this.txtName.Name = "txtName";
+            this.txtName.ReadOnly = true;
             this.txtName.Size = new System.Drawing.Size(315, 22);
             this.txtName.TabIndex = 0;
             // 
@@ -163,6 +166,7 @@ namespace Do_An_Cuoi_Ki
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "fHoSo";
+            this.Load += new System.EventHandler(this.fHoSo_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

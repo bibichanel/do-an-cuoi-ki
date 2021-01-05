@@ -46,23 +46,29 @@ namespace Do_An_Cuoi_Ki.DAO
             }
             return idMax;
         }
-        public bool InsertYogurt(string MaSP, string TenSP, string DVT, string NuocSX, float DonGiaSP, string LinkSP)
+        public bool InsertProduct(string MaSP, string TenSP, string DVT, string NuocSX, float DonGiaSP, string LinkSP)
         {
-            string query = string.Format("INSERT dbo.SANPHAM VALUES ( '{0}', N'{1}', N'{2}', N'{3}', {4}, '{5}')",
+            string query = string.Format("INSERT dbo.SANPHAM VALUES ( '{0}', N'{1}', N'{2}', N'{3}', {4}, '{5}', 'Được bán')",
                                                                 MaSP, TenSP, DVT, NuocSX, DonGiaSP, LinkSP);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
         }
-        //public bool UpdateYogurtstring MaSP, string TenSP, string DVT, string NuocSX, float DonGiaSP, string LinkSP)
-        //{
-        //    string query = string.Format("UPDATE dbo.HANG SET TenHang = N'{0}', DonGiaBan = {1}, Anh = '{2}', GhiChu = N'{3}' WHERE MaHang = '{4}'",
-        //                                    TenSC, DonGia, LinkImagie, GhiChu, MaSC);
-        //    int result = DataProvider.Instance.ExecuteNonQuery(query);
-        //    return result > 0;
-        //}
+        public bool UpdateStatusOfProduct_End(string MaSP)
+        {
+            string query = string.Format("UPDATE dbo.SANPHAM SET TRANGTHAI = N'Ngưng bán' WHERE MASP = '{0}'", MaSP);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+        }
+        public bool UpdateStatusOfProduct_Begin(string MaSP)
+        {
+            string query = string.Format("UPDATE dbo.SANPHAM SET TRANGTHAI = N'Được bán' WHERE MASP = '{0}'", MaSP);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+        }
 
         public SanPham SearchProduct(string idProduct)
         {
+            if (idProduct == null) return null;
             SanPham sp = new SanPham();
             sp.MaSP = idProduct;
             List<SanPham> spList = SanPhamDAO.Instance.LoadProductList();
@@ -77,6 +83,7 @@ namespace Do_An_Cuoi_Ki.DAO
                     sp.LinkSP = item.LinkSP;
                 }
             }
+            if (sp.DonGiaSP == null) return null;
             return sp;
         }
         public SanPham SearchProductWithName(string nameProduct)
@@ -96,6 +103,50 @@ namespace Do_An_Cuoi_Ki.DAO
                 }
             }
             return sp;
+        }
+
+        public List<SanPham> filterDVTProductList()
+        {
+            List<SanPham> SanPhamList = new List<SanPham>();
+            DataTable data = DataProvider.Instance.ExcuteQuery("select * from SANPHAM order by DVT asc");
+            foreach (DataRow item in data.Rows)
+            {
+                SanPham sanPham = new SanPham(item);
+                SanPhamList.Add(sanPham);
+            }
+            return SanPhamList;
+        }
+        public List<SanPham> filterProduceProductList()
+        {
+            List<SanPham> SanPhamList = new List<SanPham>();
+            DataTable data = DataProvider.Instance.ExcuteQuery("select * from SANPHAM order by NUOCSX asc");
+            foreach (DataRow item in data.Rows)
+            {
+                SanPham sanPham = new SanPham(item);
+                SanPhamList.Add(sanPham);
+            }
+            return SanPhamList;
+        }
+        public List<SanPham> LoadProductList_MaySell()
+        {
+            List<SanPham> SanPhamList = new List<SanPham>();
+            DataTable data = DataProvider.Instance.ExcuteQuery("SELECT* FROM SANPHAM WHERE TRANGTHAI = N'Được bán'");
+            foreach (DataRow item in data.Rows)
+            {
+                SanPham sanPham = new SanPham(item);
+                SanPhamList.Add(sanPham);
+            }
+            return SanPhamList;
+        }
+        public DataTable TopProductExpensive()
+        {
+
+            DataTable data = DataProvider.Instance.ExcuteQuery("select TOP 3 SUM(SL * GIA) TONG, TENSP, SANPHAM.MASP" +
+                                                                " from SANPHAM, CTHD" +
+                                                                " where SANPHAM.MASP = CTHD.MASP" +
+                                                                " group by TENSP, SANPHAM.MASP" +
+                                                                " order by SUM(SL * GIA) desc");
+            return data;
         }
     }
 }

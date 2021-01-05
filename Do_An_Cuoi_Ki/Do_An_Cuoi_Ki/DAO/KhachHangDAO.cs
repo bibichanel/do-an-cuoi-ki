@@ -46,13 +46,13 @@ namespace Do_An_Cuoi_Ki.DAO
             }
             return idmax;
         }
-        //public bool InsertCustomer(string MaKH, string TenKH, string DiaChiKH, string DienThoaiKH)
-        //{
-        //    string query = string.Format("INSERT dbo.KHACH VALUES ( '{0}', N'{1}', N'{2}', '{3}')",
-        //                                                        MaKH, TenKH, DiaChiKH, DienThoaiKH);
-        //    int result = DataProvider.Instance.ExecuteNonQuery(query);
-        //    return result > 0;
-        //}
+        public bool InsertCustomer(string MaKH, string TenKH, string DiaChiKH, string DienThoaiKH, string ngaySinh, float doanhSo, string ngayDK)
+        {
+            string query = string.Format("INSERT dbo.KHACHHANG VALUES ( '{0}', N'{1}', N'{2}', '{3}', '{4}', {5}, '{6}')",
+                                                                MaKH, TenKH, DiaChiKH, DienThoaiKH, ngaySinh, doanhSo, ngayDK);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+        }
         //public bool UpdateCustomer(string MaKH, string TenKH, string DiaChiKH, string DienThoaiKH)
         //{
         //    string query = string.Format("UPDATE dbo.KHACH SET TenKhach = N'{0}', DiaChi = N'{1}', DienThoai = '{2}' WHERE MaKhach = '{3}'",
@@ -75,10 +75,29 @@ namespace Do_An_Cuoi_Ki.DAO
 
         //    return resultDeleteCustomer > 0;
         //}
-        public KhachHang SearchCustomer(string idKhachHang)
+        public KhachHang SearchCustomer_WithName(string Name)
         {
             KhachHang khachHang = new KhachHang();
-            khachHang.MaKH = idKhachHang;
+            khachHang.TenKH = Name;
+            List<KhachHang> khachHangList = KhachHangDAO.Instance.LoadCustomerList();
+            foreach (KhachHang item in khachHangList)
+            {
+                if (khachHang.TenKH == item.TenKH)
+                {
+                    khachHang.MaKH = item.MaKH;
+                    khachHang.DiaChiKH = item.DiaChiKH;
+                    khachHang.SoDienThoaiKH = item.SoDienThoaiKH;
+                    khachHang.NgaySinhKH = item.NgaySinhKH;
+                    khachHang.DoanhSoKH = item.DoanhSoKH;
+                    khachHang.NgayDangKyKH = item.NgayDangKyKH;
+                }
+            }
+            return khachHang;
+        }
+        public KhachHang SearchCustomer_WithID(string idKH)
+        {
+            KhachHang khachHang = new KhachHang();
+            khachHang.MaKH = idKH;
             List<KhachHang> khachHangList = KhachHangDAO.Instance.LoadCustomerList();
             foreach (KhachHang item in khachHangList)
             {
@@ -87,9 +106,29 @@ namespace Do_An_Cuoi_Ki.DAO
                     khachHang.TenKH = item.TenKH;
                     khachHang.DiaChiKH = item.DiaChiKH;
                     khachHang.SoDienThoaiKH = item.SoDienThoaiKH;
+                    khachHang.NgaySinhKH = item.NgaySinhKH;
+                    khachHang.DoanhSoKH = item.DoanhSoKH;
+                    khachHang.NgayDangKyKH = item.NgayDangKyKH;
                 }
             }
             return khachHang;
+        }
+
+        public double TongTienTra()
+        {
+            double sum = 0;
+            DataTable data = DataProvider.Instance.ExcuteQuery("SELECT SUM(KHACHHANG.DOANHSO) FROM KHACHHANG");
+            foreach (DataRow item in data.Rows)
+                sum = double.Parse(data.Rows[0][0].ToString());
+            return sum;
+        }
+        public DataTable Top3Customer()
+        {
+
+            DataTable data = DataProvider.Instance.ExcuteQuery("select  top 3  WITH TIES DOANHSO DOANHSO, HOTEN, MAKH" +
+                                                                " from KHACHHANG" +
+                                                                " order by DOANHSO desc" );
+            return data;
         }
     }
 }

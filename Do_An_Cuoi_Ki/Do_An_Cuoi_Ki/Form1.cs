@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Do_An_Cuoi_Ki.DAO;
+using Do_An_Cuoi_Ki.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,13 +12,21 @@ using System.Windows.Forms;
 
 namespace Do_An_Cuoi_Ki
 {
-    public partial class Form1 : Form
+    public partial class fMain : Form
     {
-        public Form1()
+        private string user, pass;
+        public bool home = false;
+        public fMain()
         {
             InitializeComponent();
         }
 
+        public fMain(string user, string pass)
+        {
+            InitializeComponent();
+            this.user = user;
+            this.pass = pass;
+        }
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
@@ -57,9 +67,12 @@ namespace Do_An_Cuoi_Ki
 
         private void btnBanhang_Click(object sender, EventArgs e)
         {
-            openChildForm(new fbanHang());
-            panelMenu.Visible = false;
-            hideOnPanelForm();
+            NhanVien idNhanVien = NhanVienDAO.Instance.SearchEmployee_WithName(btnAccount.Text);
+            fbanHang f = new fbanHang(idNhanVien.MaNV);
+            this.Hide();
+            f.ShowDialog();
+            this.Show();
+
         }
 
         private void btnTongQuan_Click(object sender, EventArgs e)
@@ -101,9 +114,14 @@ namespace Do_An_Cuoi_Ki
             this.Close();
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            btnAccount.Text = this.user;
+        }
+
         private void btnProfile_Click(object sender, EventArgs e)
         {
-            fHoSo fHS = new fHoSo();
+            fHoSo fHS = new fHoSo(this.user);
             fHS.Show();
         }
     }

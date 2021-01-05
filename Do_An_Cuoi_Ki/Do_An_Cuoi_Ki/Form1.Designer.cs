@@ -1,7 +1,7 @@
 ﻿
 namespace Do_An_Cuoi_Ki
 {
-    partial class Form1
+    partial class fMain
     {
         /// <summary>
         /// Required designer variable.
@@ -45,20 +45,20 @@ namespace Do_An_Cuoi_Ki
             this.btnBanhang = new System.Windows.Forms.Button();
             this.btnTongQuan = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelChildForm = new System.Windows.Forms.Panel();
+            this.picTongQuan = new System.Windows.Forms.PictureBox();
             this.panelTitle = new System.Windows.Forms.Panel();
             this.txtTongQuan = new System.Windows.Forms.TextBox();
-            this.picTongQuan = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelMenu.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panelAccount.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panelChildForm.SuspendLayout();
-            this.panelTitle.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picTongQuan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panelChildForm.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picTongQuan)).BeginInit();
+            this.panelTitle.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -126,7 +126,7 @@ namespace Do_An_Cuoi_Ki
             this.btnHotLine.Name = "btnHotLine";
             this.btnHotLine.Size = new System.Drawing.Size(223, 42);
             this.btnHotLine.TabIndex = 0;
-            this.btnHotLine.Text = "Hot line";
+            this.btnHotLine.Text = "Hot line 1900 1508";
             this.btnHotLine.UseVisualStyleBackColor = false;
             // 
             // btnAccount
@@ -240,6 +240,18 @@ namespace Do_An_Cuoi_Ki
             this.panel2.Size = new System.Drawing.Size(222, 147);
             this.panel2.TabIndex = 0;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pictureBox1.Image = global::Do_An_Cuoi_Ki.Properties.Resources._3514981;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(220, 146);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // panelChildForm
             // 
             this.panelChildForm.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -250,6 +262,18 @@ namespace Do_An_Cuoi_Ki
             this.panelChildForm.Name = "panelChildForm";
             this.panelChildForm.Size = new System.Drawing.Size(1000, 642);
             this.panelChildForm.TabIndex = 1;
+            // 
+            // picTongQuan
+            // 
+            this.picTongQuan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
+            this.picTongQuan.Dock = System.Windows.Forms.DockStyle.Top;
+            this.picTongQuan.Image = global::Do_An_Cuoi_Ki.Properties.Resources._695;
+            this.picTongQuan.Location = new System.Drawing.Point(0, 0);
+            this.picTongQuan.Name = "picTongQuan";
+            this.picTongQuan.Size = new System.Drawing.Size(1000, 507);
+            this.picTongQuan.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picTongQuan.TabIndex = 1;
+            this.picTongQuan.TabStop = false;
             // 
             // panelTitle
             // 
@@ -271,31 +295,7 @@ namespace Do_An_Cuoi_Ki
             this.txtTongQuan.TabIndex = 0;
             this.txtTongQuan.Text = "Xin chào ";
             // 
-            // picTongQuan
-            // 
-            this.picTongQuan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
-            this.picTongQuan.Dock = System.Windows.Forms.DockStyle.Top;
-            this.picTongQuan.Image = global::Do_An_Cuoi_Ki.Properties.Resources._695;
-            this.picTongQuan.Location = new System.Drawing.Point(0, 0);
-            this.picTongQuan.Name = "picTongQuan";
-            this.picTongQuan.Size = new System.Drawing.Size(1000, 507);
-            this.picTongQuan.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picTongQuan.TabIndex = 1;
-            this.picTongQuan.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureBox1.Image = global::Do_An_Cuoi_Ki.Properties.Resources._3514981;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(220, 146);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // Form1
+            // fMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -303,20 +303,21 @@ namespace Do_An_Cuoi_Ki
             this.Controls.Add(this.panelChildForm);
             this.Controls.Add(this.panelMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form1";
+            this.Name = "fMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.panelMenu.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panelAccount.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelChildForm.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picTongQuan)).EndInit();
             this.panelTitle.ResumeLayout(false);
             this.panelTitle.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picTongQuan)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

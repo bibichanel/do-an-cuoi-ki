@@ -14,19 +14,19 @@ namespace Do_An_Cuoi_Ki.DTO
         private string diaChiKH;
         private string soDienThoaiKH;
         private string ngaySinhKH;
-        private float doanhSoKH;
+        private string doanhSoKH;
         private string ngayDangKyKH;
 
         public string MaKH { get => maKH; set => maKH = value; }
         public string TenKH { get => tenKH; set => tenKH = value; }
         public string DiaChiKH { get => diaChiKH; set => diaChiKH = value; }
         public string SoDienThoaiKH { get => soDienThoaiKH; set => soDienThoaiKH = value; }
-        public float DoanhSoKH { get => doanhSoKH; set => doanhSoKH = value; }
+        public string DoanhSoKH { get => doanhSoKH; set => doanhSoKH = value; }
         public string NgayDangKyKH { get => ngayDangKyKH; set => ngayDangKyKH = value; }
         public string NgaySinhKH { get => ngaySinhKH; set => ngaySinhKH = value; }
 
         public KhachHang() { }
-        public KhachHang(string MaKH, string TenKH, string DiaChiKH, string SoDienThoaiKH, string NgaySinhKH, float DoanhSoKH, string NgayDangKyKH)
+        public KhachHang(string MaKH, string TenKH, string DiaChiKH, string SoDienThoaiKH, string NgaySinhKH, string DoanhSoKH, string NgayDangKyKH)
         {
             this.MaKH = MaKH;
             this.TenKH = TenKH;
@@ -43,7 +43,7 @@ namespace Do_An_Cuoi_Ki.DTO
             this.DiaChiKH = row["DCHI"].ToString();
             this.SoDienThoaiKH = row["SODT"].ToString();
             this.NgaySinhKH = row["NGSINH"].ToString();
-            this.DoanhSoKH = (float) row["DOANHSO"];
+            this.DoanhSoKH =  row["DOANHSO"].ToString();
             this.NgayDangKyKH = row["NGDK"].ToString();
         }
     }

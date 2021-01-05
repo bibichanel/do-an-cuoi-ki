@@ -45,10 +45,23 @@ namespace Do_An_Cuoi_Ki.DAO
             }
             return CTHDList;
         }
-        public bool InsertBillDetail(string idBill, string idYogurt, string soLuong)
+        public List<ChiTietHoaDon> searchBillDetail(string idHD)
+        {
+            List<ChiTietHoaDon> CTHDList = new List<ChiTietHoaDon>();
+            List<ChiTietHoaDon> loadBillDetail = ChiTietHoaDonDAO.instance.LoadCTHDList();
+            foreach (ChiTietHoaDon item in loadBillDetail)
+            {
+                if(item.MaHD == idHD)
+                {
+                    CTHDList.Add(item);
+                }    
+            }
+            return CTHDList;
+        }
+        public bool InsertBillDetail(string idBill, string idProduct, string soLuong)
         {
             string query = string.Format("INSERT dbo.CTHD VALUES ( '{0}', '{1}', {2})",
-                                                                idBill, idYogurt, soLuong);
+                                                                idBill, idProduct, soLuong);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
         }
@@ -64,5 +77,15 @@ namespace Do_An_Cuoi_Ki.DAO
         //    int result = DataProvider.Instance.ExecuteNonQuery(query);
         //    return result > 0;
         //}
+        public DataTable TopProductBusiness()
+        {
+            
+            DataTable data = DataProvider.Instance.ExcuteQuery("select top 3 sum(SL) SLBANRA, SANPHAM.TENSP" +
+                                                                " from SANPHAM, CTHD" +
+                                                                " where SANPHAM.MASP = CTHD.MASP" +
+                                                                " group by TENSP" +
+                                                                " order by sum(SL) desc");
+            return data;
+        }
     }
 }

@@ -95,5 +95,32 @@ namespace Do_An_Cuoi_Ki.DAO
             }
             return nhanVien;
         }
+        public NhanVien SearchEmployee_WithName(string nameEmployee)
+        {
+            NhanVien nhanVien = new NhanVien();
+            nhanVien.NameNV = nameEmployee;
+            List<NhanVien> nhanVienList = NhanVienDAO.Instance.LoadEmployeeList();
+            foreach (NhanVien item in nhanVienList)
+            {
+                if (nhanVien.NameNV == item.NameNV)
+                {
+                    nhanVien.MaNV = item.MaNV;
+                    nhanVien.NgayVaoLam = item.NgayVaoLam;
+                    nhanVien.DienThoai = item.DienThoai;
+
+                }
+            }
+            return nhanVien;
+        }
+        public DataTable Top3Employee()
+        {
+
+            DataTable data = DataProvider.Instance.ExcuteQuery("select top 3 with ties SUM(TRIGIA) TONG, HOTEN, NHANVIEN.MANV" +
+                                                                " from NHANVIEN, HOADON" +
+                                                                " where NHANVIEN.MANV = HOADON.MANV" +
+                                                                " group by NHANVIEN.MANV, HOTEN" +
+                                                                " order by SUM(TRIGIA) desc");
+            return data;
+        }
     }
 }

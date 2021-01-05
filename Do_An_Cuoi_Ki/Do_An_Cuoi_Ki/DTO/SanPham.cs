@@ -13,17 +13,19 @@ namespace Do_An_Cuoi_Ki.DTO
         private string tenSP;
         private string dVT;
         private string nuocSX;
-        private float donGiaSP;
+        private string donGiaSP;
         private string linkSP;
+        private string statusSP;
         public string NuocSX { get => nuocSX; set => nuocSX = value; }
-        public float DonGiaSP { get => donGiaSP; set => donGiaSP = value; }
+        public string DonGiaSP { get => donGiaSP; set => donGiaSP = value; }
         public string LinkSP { get => linkSP; set => linkSP = value; }
         public string MaSP { get => maSP; set => maSP = value; }
         public string TenSP { get => tenSP; set => tenSP = value; }
         public string DVT { get => dVT; set => dVT = value; }
+        public string StatusSP { get => statusSP; set => statusSP = value; }
 
         public SanPham() { }
-        public SanPham(string MaSP, string TenSP, string DVT, string NuocSX, float DonGiaSP, string LinkSP )
+        public SanPham(string MaSP, string TenSP, string DVT, string NuocSX, string DonGiaSP, string LinkSP, string StatusSP )
         {
             this.MaSP = MaSP;
             this.TenSP = TenSP;
@@ -31,6 +33,7 @@ namespace Do_An_Cuoi_Ki.DTO
             this.NuocSX = NuocSX;
             this.DonGiaSP = DonGiaSP;
             this.LinkSP = LinkSP;
+            this.StatusSP = StatusSP;
         }
         public SanPham(DataRow row)
         {
@@ -38,8 +41,9 @@ namespace Do_An_Cuoi_Ki.DTO
             this.TenSP = row["TENSP"].ToString();
             this.DVT = row["DVT"].ToString();
             this.NuocSX = row["NUOCSX"].ToString();
-            this.DonGiaSP = (float)row["GIA"];
+            this.DonGiaSP = row["GIA"].ToString();
             this.LinkSP = row["LINK_ANH"].ToString();
+            this.StatusSP = row["TRANGTHAI"].ToString();
         }
     }
 }

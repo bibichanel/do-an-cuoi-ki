@@ -22,7 +22,7 @@ namespace Do_An_Cuoi_Ki.DAO
             private set { DataProvider.instance = value; }
         }
         private DataProvider() { }
-        private string connectionStr = @"Data Source=LAPTOP-L95VF11G\SQLEXPRESS;Initial Catalog=QUANLIBANHANG;Integrated Security=True";
+        private string connectionStr = @"Data Source=LAPTOP-L95VF11G\SQLEXPRESS;Initial Catalog=DO_AN;User ID=sa; Password=123;";
         public DataTable ExcuteQuery(string query, object[] parameter = null)
         {
             DataTable data = new DataTable();

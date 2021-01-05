@@ -29,7 +29,6 @@ namespace Do_An_Cuoi_Ki.DTO
             this.MaHD = row["SOHD"].ToString();
             this.MaHang = row["MASP"].ToString();
             this.SoLuong = (int) row["SL"];
-
         }
     }
 }

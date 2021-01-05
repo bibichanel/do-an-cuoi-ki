@@ -52,10 +52,10 @@ namespace Do_An_Cuoi_Ki.DAO
         //    int result = DataProvider.Instance.ExecuteNonQuery(query);
         //    return result > 0;
         //}
-        public bool InsertBill(string idBill, string date, string idKH, string idNV, float tongTien)
+        public bool InsertBill(string idBill, string date, string idKH, string idNV, string tongTien, string ghiChu)
         {
-            string query = string.Format("INSERT dbo.HOADON VALUES ( '{0}', '{1}', '{2}', '{3}', {4})",
-                                                                idBill, date, idKH, idNV, tongTien);
+            string query = string.Format("INSERT dbo.HOADON VALUES ( '{0}', '{1}', '{2}', '{3}', {4}, N'{5}')",
+                                                                idBill, date, idKH, idNV, tongTien, ghiChu);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
         }
@@ -85,6 +85,7 @@ namespace Do_An_Cuoi_Ki.DAO
                     hoaDon.NgayBan = item.NgayBan;
                     hoaDon.MaKhach = item.MaKhach;
                     hoaDon.TongTien = item.TongTien;
+                    hoaDon.GhiChu = item.GhiChu;
                 }
             }
             return hoaDon;
@@ -102,6 +103,7 @@ namespace Do_An_Cuoi_Ki.DAO
                     hoaDon.NgayBan = item.NgayBan;
                     hoaDon.MaKhach = item.MaKhach;
                     hoaDon.TongTien = item.TongTien;
+                    hoaDon.GhiChu = item.GhiChu;
                 }
             }
             return hoaDon;
@@ -119,9 +121,18 @@ namespace Do_An_Cuoi_Ki.DAO
                     hoaDon.NgayBan = item.NgayBan;
                     hoaDon.MaNV = item.MaNV;
                     hoaDon.TongTien = item.TongTien;
+                    hoaDon.GhiChu = item.GhiChu;
                 }
             }
             return hoaDon;
+        }
+        public double TongDoanhThu()
+        {
+            double sum = 0;
+            DataTable data = DataProvider.Instance.ExcuteQuery("SELECT SUM(TRIGIA) FROM HOADON");
+            foreach (DataRow item in data.Rows)
+                sum = double.Parse(data.Rows[0][0].ToString());
+            return sum;
         }
     }
 }
